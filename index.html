@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SmartFlow Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>SmartFlow Water Monitoring Dashboard</h1>
+
+<div class="card">
+  <p>Flow Sensor 1: <span id="f1">0</span> L/hr</p>
+  <p>Flow Sensor 2: <span id="f2">0</span> L/hr</p>
+  <p>Flow Sensor 3: <span id="f3">0</span> L/hr</p>
+</div>
+
+<button onclick="openValve()">Open Valve</button>
+<button onclick="closeValve()">Close Valve</button>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
