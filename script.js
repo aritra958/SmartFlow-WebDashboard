@@ -1,4 +1,4 @@
-alert("JS IS RUNNING");
+console.log("➡️ script.js is running!");
 const firebaseConfig = {
   apiKey: "AIzaSyAZhuNWFUQH-Wj4J44SlIs116q2cce-Pnc",
   authDomain: "smart-flow-water-monitor.firebaseapp.com",
