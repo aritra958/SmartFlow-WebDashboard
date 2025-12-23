@@ -1,32 +1,38 @@
-console.log("➡️ script.js is running!");
+// Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyAZhuNWFUQH-Wj4J44SlIs116q2cce-Pnc",
-  authDomain: "smart-flow-water-monitor.firebaseapp.com",
-  databaseURL: "https://smart-flow-water-monitor-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "smart-flow-water-monitor",
-  storageBucket: "smart-flow-water-monitor.firebasestorage.app",
-  messagingSenderId: "244582964526",
-  appId: "1:244582964526:web:b3994012e6eba99b08aebf"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "smart-flow-water-mor.firebaseapp.com",
+  databaseURL: "https://smart-flow-water-mor-default-rtdb.firebaseio.com",
+  projectId: "smart-flow-water-mor",
+  storageBucket: "smart-flow-water-mor.appspot.com",
+  messagingSenderId: "YOUR_ID",
+  appId: "YOUR_APP_ID"
 };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+// Reference to database
 const db = firebase.database();
 
-// Read flow data
-db.ref("flow").on("value", (snapshot) => {
+// Reference EXACT path
+const flowRef = db.ref("flow");
+
+// Listen for data
+flowRef.on("value", (snapshot) => {
+  if (!snapshot.exists()) {
+    console.log("❌ No data found at /flow");
+    return;
+  }
+
   const data = snapshot.val();
-  document.getElementById("f1").innerText = data.flow1;
-  document.getElementById("f2").innerText = data.flow2;
-  document.getElementById("f3").innerText = data.flow3;
+  console.log("🔥 Firebase Data:", data);
+
+  // Update UI
+  document.getElementById("flow1").innerText = data.flow1 ?? 0;
+  document.getElementById("flow2").innerText = data.flow2 ?? 0;
+  document.getElementById("flow3").innerText = data.flow3 ?? 0;
+
+  document.getElementById("lastUpdate").innerText =
+    new Date().toLocaleTimeString();
 });
-
-// Control valve
-function openValve() {
-  db.ref("valve").set({ state: 1 });
-}
-
-function closeValve() {
-  db.ref("valve").set({ state: 0 });
-}
