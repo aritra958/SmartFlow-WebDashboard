@@ -1,4 +1,4 @@
-// 🔹 Firebase Config (replace with your own)
+alert("JS IS RUNNING");
 const firebaseConfig = {
   apiKey: "AIzaSyAZhuNWFUQH-Wj4J44SlIs116q2cce-Pnc",
   authDomain: "smart-flow-water-monitor.firebaseapp.com",
